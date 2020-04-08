@@ -31,6 +31,11 @@ class CreateOrdersTable extends Migration
             $table->timestamp('sent_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('set null');
         });
     }
 
